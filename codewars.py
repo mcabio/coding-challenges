@@ -1,26 +1,139 @@
-# Complete the square sum function so that it squares each number passed 
-# into it and then sums the results together.
+# Given a year, return the century it is in.
 
-# For example, for [1, 2, 2] it should return 9 because 
-# 1^2 + 2^2 + 1^2 = 9
+# Examples
+# 1705 --> 18
+# 1900 --> 19
+# 1601 --> 17
+# 2000 --> 20
+# 2742 --> 28
+# Note: this kata uses strict construction as shown in the 
+# description and the examples, you can read more about it here
 
-# function takes in list of integers
-# function outputs an integer
-# each integer in the list will be squared
-# then each squared integer will be added to each other for the output.
+def century(year):
+    cent = year - 1
+    time = cent // 100
+    hundred = time + 1
+    return hundred
 
-# Needed help solving
 
-def square_sum(numbers):
-    """Function that squares each number passed into it and then 
-    adds them together"""
-    total = 0  # start off with zero first so the for loop has something to add into.
-    for num in numbers: # loops through each number on the list
-        total += num ** 2  # 0 + each number squared by 2
-    print(total)
+year = 1900
+result = century(year)
+print(result)
 
-numbers = [4, 4, 4, 4] # this should output 64
-square_sum(numbers)
+# Given an array of integers your solution should find the smallest integer.
+
+# For example:
+
+# Given [34, 15, 88, 2] your solution will return 2
+# Given [34, -345, -1, 100] your solution will return -345
+# You can assume, for the purpose of this kata, that the supplied 
+# array will not be empty.
+
+def find_smallest_int(arr):
+    # loop over the integers in the array.
+
+    smallest = arr[0]
+    for num in arr:
+        if num < smallest:
+            smallest = num
+    return smallest
+
+arr = [34, -345, -1, 100]
+result = find_smallest_int(arr)
+print(result)
+
+
+# Complete the solution so that it reverses the string passed into it.
+
+# 'world'  =>  'dlrow'
+# 'word'   =>  'drow'
+
+def solution(string):
+    """"Reverse the string parameter"""
+    reverse_string = string[::-1]
+    return reverse_string
+
+string = 'palindrome'
+result = solution(string)
+print(result)
+
+
+# Fake Binary
+
+# Given a string of digits, you should replace any digit below 5 
+# with '0' and any digit 5 and above with '1'. Return the resulting string.
+
+# Note: input will never be an empty string
+# This was solved but it was challenging
+
+def fake_bin(x):
+    """Return a 0 if integer is < 5 and a 1 if it's > 5"""
+    # Take the string and turn it into an integer
+    list_x = [int(num) for num in str(x)] # list comprehension
+    binary = []
+    
+    for num in list_x:
+        if num < 5:
+            binary.append(0)
+        else:
+            binary.append(1)
+    
+    numbers_str = [str(i) for i in binary]
+    string_binary = "".join(numbers_str)
+    return string_binary
+
+
+
+x = "4848484848484848"
+result = fake_bin(x)
+print(result)
+
+
+# Removing Elements
+
+# Take an array and remove every second element from the array. 
+# Always keep the first element and start removing with the next element.
+
+# Example:
+# ["Keep", "Remove", "Keep", "Remove", "Keep", ...] --> ["Keep", "Keep", "Keep", ...]
+
+# None of the arrays will be empty, so you don't have to worry about that!
+
+def remove_every_other(my_list):
+    """Remove every second element in the array"""
+    # Create a function, loop over the length of the array,
+    # To remove every other element of the array, use indexing and then 
+    # .pop
+    # return array without the elements
+
+    return my_list[::2]
+
+
+my_list = ["Keep", "Remove", "Keep", "Remove", "Keep", "Remove", "Keep", "Remove"]
+result = remove_every_other(my_list)
+print(result)
+
+
+
+# We need a function that can transform a number (integer) into a string.
+
+# What ways of achieving this do you know?
+
+# Examples (input --> output):
+# 123  --> "123"
+# 999  --> "999"
+# -100 --> "-100"
+
+# Solved
+
+def number_to_string(num):
+    """Turn an integer into a string"""
+    return str(num)
+
+
+num = 4444
+result = number_to_string(num)
+print(result)
 
 
 
@@ -50,39 +163,6 @@ def string_to_number(s):
 result = string_to_number("4444")
 print(result)
 
-
-
-# Create a function with two arguments that will return an array of the first n multiples of x.
-# Assume both the given number and the number of times to count will be positive numbers greater than 0.
-# Return the results as an array or list ( depending on language ).
-
-# Examples
-# count_by(1,10) should return [1,2,3,4,5,6,7,8,9,10]
-# count_by(2,5) should return [2,4,6,8,10]
-
-# This function uses a list comprehension to generate the 
-# first n multiples of x. It iterates from 1 to n (inclusive) and 
-# multiplies each number by x, appending the result to the list. 
-# It returns the list containing the multiples.
-
-# Needed help solving.
-
-def count_by(x, n):
-    """
-    Return a sequence of numbers counting by `x` `n` times.
-    """
-    return [x * i for i in range(1, n + 1)]
-
-# Without list comprehension:
-
-def count_by(x, n):
-    multiples = []
-    for i in range(1, n + 1):
-        multiples.append(x * i)
-    return multiples
-
-count_by(2, 8)
-# This should be [2, 4, 6, 8, 10, 12, 14, 16]
 
 
 # Consider an array/list of sheep where some sheep may be missing 
@@ -167,39 +247,3 @@ def digitize(n):
     return([int(x) for x in str(n)[::-1]])
 
 
-# Find the smallest integer in the array
-
-# Given an array of integers your solution should find the smallest integer.
-
-# For example:
-
-# Given [34, 15, 88, 2] your solution will return 2
-# Given [34, -345, -1, 100] your solution will return -345
-# You can assume, for the purpose of this kata, that the supplied array 
-# will not be empty.
-
-# Needed help solving
-
-       
-def find_smallest_int(arr):
-    """Return smallest integer in array"""
-    # loop over the length of the array
-    # index 0 will be the smallest one
-    # if the loop comes across a number smaller than the one at index[0]
-    # That will replace the old one and so on and so forth.
-
-    smallest = arr[0] # First number in the array is considered the smallest
-
-    for num in arr[1:]: # For loop iterates over the array starting at 
-                        # the second integer.
-        if num < smallest:  # If num is less than the smallest, replace
-                            # the integer in the variable with new num
-                            # And continue to do so until it loops 
-                            # over the whole array
-            smallest = num
-
-    print(smallest)
-        
-
-arr = [34, -345, -1, 100]
-find_smallest_int(arr)
